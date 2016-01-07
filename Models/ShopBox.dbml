@@ -21,6 +21,7 @@
       <Association Name="User_TagStore" Member="TagStores" ThisKey="userId" OtherKey="userId" Type="TagStore" />
       <Association Name="User_merchantStore" Member="merchantStores" ThisKey="userId" OtherKey="userId" Type="merchantStore" />
       <Association Name="User_TagReview" Member="TagReviews" ThisKey="userId" OtherKey="userId" Type="TagReview" />
+      <Association Name="User_CustomerShopCart" Member="CustomerShopCarts" ThisKey="userId" OtherKey="userId" Type="CustomerShopCart" />
     </Type>
   </Table>
   <Table Name="dbo.Category" Member="Categories">
@@ -67,6 +68,7 @@
       <Association Name="Product_MotorCyclesTbl" Member="MotorCyclesTbls" ThisKey="productId" OtherKey="productId" Type="MotorCyclesTbl" />
       <Association Name="Product_JewelleryTbl" Member="JewelleryTbls" ThisKey="productId" OtherKey="productId" Type="JewelleryTbl" />
       <Association Name="Product_BooksTbl" Member="BooksTbls" ThisKey="productId" OtherKey="productId" Type="BooksTbl" />
+      <Association Name="Product_CustomerShopCart" Member="CustomerShopCarts" ThisKey="productId" OtherKey="productId" Type="CustomerShopCart" />
       <Association Name="Category_Product" Member="Category" ThisKey="categoryId" OtherKey="categoryId" Type="Category" IsForeignKey="true" />
       <Association Name="subCategory_Product" Member="subCategory" ThisKey="subCategoryId" OtherKey="subCategoryId" Type="subCategory" IsForeignKey="true" />
       <Association Name="Store_Product" Member="Store" ThisKey="storeId" OtherKey="storeId" Type="Store" IsForeignKey="true" />
@@ -409,6 +411,21 @@
       <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="productId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Product_BooksTbl" Member="Product" ThisKey="productId" OtherKey="productId" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerShopCart" Member="CustomerShopCarts">
+    <Type Name="CustomerShopCart">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="productId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="userId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="orderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="contact" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="orderNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Product_CustomerShopCart" Member="Product" ThisKey="productId" OtherKey="productId" Type="Product" IsForeignKey="true" />
+      <Association Name="User_CustomerShopCart" Member="User" ThisKey="userId" OtherKey="userId" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

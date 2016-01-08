@@ -66,9 +66,9 @@
       <Association Name="Product_MakeupTbl" Member="MakeupTbls" ThisKey="productId" OtherKey="productId" Type="MakeupTbl" />
       <Association Name="Product_MobilesTbl" Member="MobilesTbls" ThisKey="productId" OtherKey="productId" Type="MobilesTbl" />
       <Association Name="Product_MotorCyclesTbl" Member="MotorCyclesTbls" ThisKey="productId" OtherKey="productId" Type="MotorCyclesTbl" />
-      <Association Name="Product_JewelleryTbl" Member="JewelleryTbls" ThisKey="productId" OtherKey="productId" Type="JewelleryTbl" />
       <Association Name="Product_BooksTbl" Member="BooksTbls" ThisKey="productId" OtherKey="productId" Type="BooksTbl" />
       <Association Name="Product_CustomerShopCart" Member="CustomerShopCarts" ThisKey="productId" OtherKey="productId" Type="CustomerShopCart" />
+      <Association Name="Product_JewelleryTbl" Member="JewelleryTbls" ThisKey="productId" OtherKey="productId" Type="JewelleryTbl" />
       <Association Name="Category_Product" Member="Category" ThisKey="categoryId" OtherKey="categoryId" Type="Category" IsForeignKey="true" />
       <Association Name="subCategory_Product" Member="subCategory" ThisKey="subCategoryId" OtherKey="subCategoryId" Type="subCategory" IsForeignKey="true" />
       <Association Name="Store_Product" Member="Store" ThisKey="storeId" OtherKey="storeId" Type="Store" IsForeignKey="true" />
@@ -369,27 +369,6 @@
       <Association Name="Market_Store" Member="Market" ThisKey="marketId" OtherKey="marketId" Type="Market" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.JewelleryTbl" Member="JewelleryTbls">
-    <Type Name="JewelleryTbl">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
-      <Column Name="Photo1" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Photo2" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Photo3" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Photo4" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Condition" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="MPN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Brand" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Metal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Material" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="BodyArea" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Country" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Color" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="productId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Product_JewelleryTbl" Member="Product" ThisKey="productId" OtherKey="productId" Type="Product" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.BooksTbl" Member="BooksTbls">
     <Type Name="BooksTbl">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -426,6 +405,28 @@
       <Column Name="orderNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Product_CustomerShopCart" Member="Product" ThisKey="productId" OtherKey="productId" Type="Product" IsForeignKey="true" />
       <Association Name="User_CustomerShopCart" Member="User" ThisKey="userId" OtherKey="userId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JewelleryTbl" Member="JewelleryTbls">
+    <Type Name="JewelleryTbl">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="Photo1" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Photo2" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Photo3" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Photo4" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Condition" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MPN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Brand" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Metal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Material" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BodyArea" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Color" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="productId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="details" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Product_JewelleryTbl" Member="Product" ThisKey="productId" OtherKey="productId" Type="Product" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
